@@ -32,7 +32,7 @@ namespace WebApi.Controllers
         [HttpPost]
         public IActionResult AdresDefteriEkle(AdresDefteri adresDefteri)
         {
-            _adresRepository.AdresDefteriEkle(adresDefteri);
+          bool durum =  _adresRepository.AdresDefteriEkle(adresDefteri);
             return Ok();
         }
         [HttpPut]

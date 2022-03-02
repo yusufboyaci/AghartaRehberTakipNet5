@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,5 +12,6 @@ namespace WebUI.Models
         public string Mail { get; set; }
         public string Konum { get; set; }
         public int KisiId { get; set; }
+        public List<KisiVM> Kisiler { get; set; }
     }
 }

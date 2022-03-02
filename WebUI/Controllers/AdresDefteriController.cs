@@ -11,16 +11,24 @@ namespace WebUI.Controllers
     public class AdresDefteriController : Controller
     {
         private readonly AdresDefteriApiService _service;
-        public AdresDefteriController(AdresDefteriApiService service)
+        private readonly KisiApiService _kisiService;
+        public AdresDefteriController(AdresDefteriApiService service, KisiApiService kisiService)
         {
             _service = service;
+            _kisiService = kisiService;
         }
         public async Task<IActionResult> Index()
         {
             return View(await _service.GetirAdresDefterleri());
         }
         [HttpGet]
-        public IActionResult Create() => View();
+        public async Task<IActionResult> Create() {
+
+            ViewBag.KisiListesi = await _kisiService.GetirKisiler();
+            return View(); 
+        
+        
+        }
         [HttpPost]
         public async Task<IActionResult> Create(AdresDefteriVM adresDefteriVM)
         {

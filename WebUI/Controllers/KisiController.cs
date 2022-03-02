@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,21 @@ namespace WebUI.Controllers
             return View(await _service.GetirKisiler());
         }
         [HttpGet]
-        public IActionResult Create() => View();
+        public IActionResult Create()
+        {
+           // AdresDefteriVM nesne = new AdresDefteriVM();
+            //nesne.Kisiler = (List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>)await _service.GetirKisiler()
+            //    { 
+            //};
+            //nesne.Kisiler = _service.GetirKisiler().Result.Select(x => new SelectListItem()
+            //{
+            //    Text = x.Ad,
+            //    Value = x.Id.ToString()
+
+            //}).ToList();
+
+            return View(); 
+        }
         [HttpPost]
         public async Task<IActionResult> Create(KisiVM kisiVM)
         {

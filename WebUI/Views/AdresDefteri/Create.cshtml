@@ -1,7 +1,9 @@
 ﻿@model AdresDefteriVM
 
+
 @{
     ViewData["Title"] = "Create";
+    List<KisiVM> kisiler = ViewBag.KisiListesi;
 }
 
 <h1>Create</h1>
@@ -27,11 +29,22 @@
                 <input asp-for="Konum" class="form-control" />
                 <span asp-validation-for="Konum" class="text-danger"></span>
             </div>
+           
             <div class="form-group">
                 <label asp-for="KisiId" class="control-label"></label>
-                <input asp-for="KisiId" class="form-control" />
+                <select asp-for="KisiId" class="form-control">
+               @foreach (var item in kisiler)
+	            {
+                   <option value="@item.Id">@item.Ad</option>
+		 
+	            }
+                </select>
+
+
+                @*<input asp-for="KisiId" class="form-control" />*@
                 <span asp-validation-for="KisiId" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

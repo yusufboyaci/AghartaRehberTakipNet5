@@ -26,23 +26,44 @@ namespace DataAccess.Concrete
 
         public bool KisiEkle(Kisi kisi)
         {
-            if (kisi != null)
+            try
             {
-                _context.Kisiler.Add(kisi);
-                return _context.SaveChanges() > 0;
+                if (kisi != null)
+                {
+                    _context.Kisiler.Add(kisi);
+                    return _context.SaveChanges() > 0;
+                }
+                else
+                {
+                    return false;
+                }               
             }
-            return false;
+            catch (Exception m)
+            {
 
+                throw new Exception(m.Message);
+            }
+           
         }
 
         public bool KisiGuncelle(Kisi kisi)
         {
-            if (kisi != null)
+            try
             {
-                _context.Kisiler.Update(kisi);
-                return _context.SaveChanges() > 0;
+                if (kisi != null)
+                {
+                    _context.Kisiler.Update(kisi);
+                    return _context.SaveChanges() > 0;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            return false;
+            catch (Exception m)
+            {
+                throw new Exception(m.Message);
+            }           
         }
 
         public bool KisiSil(int id)

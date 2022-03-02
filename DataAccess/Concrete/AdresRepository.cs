@@ -25,22 +25,43 @@ namespace DataAccess.Concrete
 
         public bool AdresDefteriEkle(AdresDefteri adresDefteri)
         {
-            if (adresDefteri != null)
+            try
             {
-                _context.AdresDefteriler.Add(adresDefteri);
-                return _context.SaveChanges() > 0;
+                if (adresDefteri != null)
+                {
+                    _context.AdresDefteriler.Add(adresDefteri);
+                    return _context.SaveChanges() > 0;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            return false;
+            catch (Exception m)
+            {
+                throw new Exception(m.Message);
+            }
         }
 
         public bool AdresDefteriGuncelle(AdresDefteri adresDefteri)
         {
-            if (adresDefteri != null)
+            try
             {
-                _context.AdresDefteriler.Update(adresDefteri);
-                return _context.SaveChanges() > 0;
+                if (adresDefteri != null)
+                {
+                    _context.AdresDefteriler.Update(adresDefteri);
+                    return _context.SaveChanges() > 0;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            return false;
+            catch (Exception m)
+            {
+
+                throw new Exception(m.Message);
+            }  
         }
 
         public bool AdresDefteriSil(int id)
