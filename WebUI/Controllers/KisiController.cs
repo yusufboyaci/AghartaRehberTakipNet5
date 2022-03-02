@@ -23,17 +23,6 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-           // AdresDefteriVM nesne = new AdresDefteriVM();
-            //nesne.Kisiler = (List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>)await _service.GetirKisiler()
-            //    { 
-            //};
-            //nesne.Kisiler = _service.GetirKisiler().Result.Select(x => new SelectListItem()
-            //{
-            //    Text = x.Ad,
-            //    Value = x.Id.ToString()
-
-            //}).ToList();
-
             return View(); 
         }
         [HttpPost]
