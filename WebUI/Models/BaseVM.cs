@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebUI.Models
 {
-    public class BaseVM
+    public abstract class BaseVM
     {
         public int Id { get; set; }
 

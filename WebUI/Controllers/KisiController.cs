@@ -29,7 +29,7 @@ namespace WebUI.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public IActionResult Edit(int id) => View(_service.GetirKisiIdIle(id));
+        public IActionResult Edit(int id) => View(_service.GetirKisiIdIle(id).Result);
         [HttpPost]
         public async Task<IActionResult> Edit(KisiVM kisiVM)
         {
