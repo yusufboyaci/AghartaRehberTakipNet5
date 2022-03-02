@@ -33,6 +33,7 @@ namespace WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(AdresDefteriVM adresDefteriVM)
         {
+            adresDefteriVM.IsActive = true;
             await _service.AdresDefteriGuncelle(adresDefteriVM);
             return RedirectToAction("Index");
         }

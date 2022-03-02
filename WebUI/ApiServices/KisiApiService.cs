@@ -34,7 +34,6 @@ namespace WebUI.ApiServices
 
         public async Task<KisiVM> GetirKisiIdIle(int id)
         {
-            //var response = await _httpClient.GetAsync($"kisi/Edit/{id}");
             var response = await _httpClient.GetAsync($"kisi/{id}");
             if (response.IsSuccessStatusCode)
             {

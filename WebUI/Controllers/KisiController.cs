@@ -33,6 +33,7 @@ namespace WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(KisiVM kisiVM)
         {
+            kisiVM.IsActive = true;
             await _service.KisiGuncelle(kisiVM);
             return RedirectToAction("Index");
         }

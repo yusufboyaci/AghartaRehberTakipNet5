@@ -32,24 +32,29 @@ namespace WebApi.Controllers
         [HttpPost]
         public IActionResult AdresDefteriEkle(AdresDefteri adresDefteri)
         {
-            return Json(_adresRepository.AdresDefteriEkle(adresDefteri));
+            _adresRepository.AdresDefteriEkle(adresDefteri);
+            return Ok();
         }
         [HttpPut]
         public IActionResult AdresDefteriGuncelle(AdresDefteri adresDefteri)
         {
-            return Json(_adresRepository.AdresDefteriGuncelle(adresDefteri));
+            _adresRepository.AdresDefteriGuncelle(adresDefteri);
+            return Ok();
         }
         //[HttpDelete("{id}")]
         //public IActionResult AdresDefteriSil(int id)
         //{
-        //    return Json(_adresRepository.AdresDefteriSil(id));
+        //    _adresRepository.AdresDefteriSil(id);
+        //      return Ok();
         //}
         [HttpDelete("{id}")]
-        public IActionResult AdresDefteritSil(AdresDefteri adresDefteri)
+        public IActionResult AdresDefteritSil(int id)
         {
+            AdresDefteri adresDefteri = _adresRepository.GetirAdresDefteriIdIle(id);
             adresDefteri.IsActive = false;
-
-            return Json(_adresRepository.AdresDefteriGuncelle(adresDefteri));
+            adresDefteri.KisiId = 5;
+            _adresRepository.AdresDefteriGuncelle(adresDefteri);
+            return Ok();
         }
     }
 }
