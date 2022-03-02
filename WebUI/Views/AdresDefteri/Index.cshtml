@@ -1,0 +1,60 @@
+﻿@model IEnumerable<AdresDefteriVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+              Id
+            </th>
+            <th>
+               Adres
+            </th>
+            <th>
+                Mail
+            </th>
+            <th>
+             Konum
+            </th>
+            <th>
+               KisiId
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Konum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KisiId)
+            </td>
+            <td>
+                
+                <a asp-controller="AdresDefteri" asp-action="Edit">Edit</a>|
+                <a asp-controller="AdresDefteri" asp-action="Delete">Delete</a>
+              
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

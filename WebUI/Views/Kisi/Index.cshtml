@@ -1,0 +1,52 @@
+﻿@model IEnumerable<KisiVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+               Ad
+            </th>
+            <th>
+               Soyad
+            </th>
+            <th>
+               Yas
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soyad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yas)
+            </td>
+            <td>
+                <a asp-controller="Kisi" asp-action="Edit">Edit</a> |
+                <a asp-controller="Kisi" asp-action="Delete">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
