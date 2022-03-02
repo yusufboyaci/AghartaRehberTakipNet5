@@ -24,10 +24,10 @@ namespace WebApi.Controllers
         [HttpGet]
         public IActionResult GetirKisiler()
         {
-          
-            return Json(_kisiRepository.Kisiler);
+
+            return Json(_kisiRepository.Kisiler.Where(x => x.IsActive == true));
         }
-        [HttpGet("{id}")]                   
+        [HttpGet("{id}")]
         public IActionResult GetirKisiIdIle(int id)
         {
             return Json(_kisiRepository.GetirKisiIdIle(id));
@@ -45,10 +45,18 @@ namespace WebApi.Controllers
             return Ok();
         }
 
+        //[HttpDelete("{id}")]
+        //public IActionResult KisiSil(int id)
+        //{
+        //    _kisiRepository.KisiSil(id);
+        //    return Ok();
+        //}
         [HttpDelete("{id}")]
         public IActionResult KisiSil(int id)
         {
-            _kisiRepository.KisiSil(id);
+            Kisi kisi = _kisiRepository.GetirKisiIdIle(id);
+            kisi.IsActive = false;
+            _kisiRepository.KisiGuncelle(kisi);
             return Ok();
         }
     }

@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace WebUI.Models
 {
-    public class AdresDefteriVM
+    public class AdresDefteriVM : BaseVM
     {
-        public int Id { get; set; }
         public string Adres { get; set; }
         public string Mail { get; set; }
         public string Konum { get; set; }

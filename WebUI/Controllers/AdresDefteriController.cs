@@ -24,6 +24,7 @@ namespace WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(AdresDefteriVM adresDefteriVM)
         {
+            adresDefteriVM.IsActive = true;
             await _service.AdresDefteriEkle(adresDefteriVM);
             return RedirectToAction("Index");
         }

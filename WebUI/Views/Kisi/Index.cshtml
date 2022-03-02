@@ -43,8 +43,8 @@
                 @Html.DisplayFor(modelItem => item.Yas)
             </td>
             <td>
-                <a asp-controller="Kisi" asp-action="Edit">Edit</a> |
-                <a asp-controller="Kisi" asp-action="Delete">Delete</a>
+                <a asp-controller="Kisi" asp-action="Edit" asp-route-id ="@item.Id">Edit</a> |
+                <a asp-controller="Kisi" asp-action="Delete" asp-route-id ="@item.Id">Delete</a>
             </td>
         </tr>
 }

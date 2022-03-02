@@ -22,8 +22,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public IActionResult GetirAdresDefteriler()
         {
-            var nesne = JsonConvert.SerializeObject(_adresRepository.AdresDefteriler);
-            return Json(nesne);
+            return Json(_adresRepository.AdresDefteriler.Where(x => x.IsActive == true));
         }
         [HttpGet("{id}")]
         public IActionResult GetirAdresDefteriIdIle(int id)
@@ -40,10 +39,17 @@ namespace WebApi.Controllers
         {
             return Json(_adresRepository.AdresDefteriGuncelle(adresDefteri));
         }
+        //[HttpDelete("{id}")]
+        //public IActionResult AdresDefteriSil(int id)
+        //{
+        //    return Json(_adresRepository.AdresDefteriSil(id));
+        //}
         [HttpDelete("{id}")]
-        public IActionResult AdresDefteriSil(int id)
+        public IActionResult AdresDefteritSil(AdresDefteri adresDefteri)
         {
-            return Json(_adresRepository.AdresDefteriSil(id));
+            adresDefteri.IsActive = false;
+
+            return Json(_adresRepository.AdresDefteriGuncelle(adresDefteri));
         }
     }
 }

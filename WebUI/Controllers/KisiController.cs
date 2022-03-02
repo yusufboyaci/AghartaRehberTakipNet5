@@ -24,11 +24,12 @@ namespace WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(KisiVM kisiVM)
         {
+            kisiVM.IsActive = true;
             await _service.KisiEkle(kisiVM);
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public async Task<IActionResult> Edit(KisiVM kisiVM,int id) => View(kisiVM);
+        public IActionResult Edit(int id) => View(_service.GetirKisiIdIle(id));
         [HttpPost]
         public async Task<IActionResult> Edit(KisiVM kisiVM)
         {
