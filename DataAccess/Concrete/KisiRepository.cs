@@ -38,15 +38,15 @@ namespace DataAccess.Concrete
                     return false;
                 }
             }
-            catch(ArgumentNullException m)
-            {
-                throw new ArgumentNullException(m.Message);
-            }
-           
-            catch(NullReferenceException m)
-            {
-                throw new NullReferenceException(m.Message);
-            }
+            //catch (ArgumentNullException m)
+            //{
+            //    throw new ArgumentNullException(m.Message);
+            //}
+
+            //catch (NullReferenceException m)
+            //{
+            //    throw new NullReferenceException(m.Message);
+            //}
             catch (Exception m)
             {
 
