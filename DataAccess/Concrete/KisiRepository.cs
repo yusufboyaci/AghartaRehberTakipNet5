@@ -36,14 +36,22 @@ namespace DataAccess.Concrete
                 else
                 {
                     return false;
-                }               
+                }
+            }
+            catch(ArgumentNullException m)
+            {
+                throw new ArgumentNullException(m.Message);
+            }
+           
+            catch(NullReferenceException m)
+            {
+                throw new NullReferenceException(m.Message);
             }
             catch (Exception m)
             {
 
                 throw new Exception(m.Message);
             }
-           
         }
 
         public bool KisiGuncelle(Kisi kisi)

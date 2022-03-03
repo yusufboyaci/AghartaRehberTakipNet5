@@ -1,4 +1,5 @@
 ﻿using DataAccess.Abstract;
+using DataAccess.Enums;
 using Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -41,6 +42,10 @@ namespace WebApi.Controllers
         [HttpPut]
         public IActionResult KisiGuncelle(Kisi kisi)
         {
+            //if (StatusEnum.Success == 0)
+            //{
+
+            //}
             _kisiRepository.KisiGuncelle(kisi);
             return Ok();
         }
