@@ -24,7 +24,10 @@ namespace WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            services.AddCors();
+
             services.AddHttpClient<KisiApiService>(o =>
             {
                 o.BaseAddress = new Uri("https://localhost:44398/api/");
@@ -34,6 +37,8 @@ namespace WebUI
             {
                 o.BaseAddress = new Uri("https://localhost:44398/api/");
             });
+
+            //services.AddAuthentication(CookieAuthentication)
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +47,7 @@ namespace WebUI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
             }
             else
             {
@@ -50,11 +56,16 @@ namespace WebUI
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader());
+
             app.UseStaticFiles();
 
             app.UseRouting();
 
             app.UseAuthorization();
+
+        
 
             app.UseEndpoints(endpoints =>
             {

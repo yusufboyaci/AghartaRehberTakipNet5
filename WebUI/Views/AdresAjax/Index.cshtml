@@ -1,0 +1,99 @@
+﻿@model IEnumerable<AdresDefteriVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Adres
+            </th>
+            <th>
+                Mail
+            </th>
+            <th>
+                Konum
+            </th>
+            <th>
+                KisiId
+            </th>
+            <th>
+                IsActive
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="table">
+
+    @*@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Konum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KisiId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                <a asp-controller="AdresAjax" asp-action="Edit" asp-route-id="@item.Id">Edit</a>|
+                <a asp-controller="AdresAjax" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}*@
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+
+        $.ajax({
+            url: "AdresDefteri/GetirAdresDefteriler",
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            async: false,
+            success: function (result) {
+
+                console.log(result);
+                //var table = $("#table tr").append(`<td>${result.Id}</td>`);
+                var table;
+                for (var item in '@Model') {
+               /* for (var item in result) {*/
+                    table.$("#table tr").append(`<td>${item.Id}</td>`);
+                    table.$("#table tr").append(`<td>${item.Adres}</td>`);
+                    table.$("#table tr").append(`<td>${item.Mail}</td>`);
+                    table.$("#table tr").append(`<td>${item.Konum}</td>`);
+                    table.$("#table tr").append(`<td>${item.KisiId}</td>`);
+                    table.$("#table tr").append(`<td>${item.IsActive}</td>`);
+                    table.$("#table tr").append(`<td> <a asp-controller="AdresAjax" asp-action="Edit" asp-route-id="${item.Id}">Edit</a>|
+                <a asp-controller="AdresAjax" asp-action="Delete" asp-route-id="${item.Id}">Delete</a></td>`);
+                }
+                
+            },
+            error: function (result) {
+                console.log(result);
+                alert("Hata sonucu");
+            }
+        });
+    });
+</script>

@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - WebUI</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
     <header>
@@ -30,6 +31,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="AdresDefteri" asp-action="Index">Adres Defterler</a>
                         </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="AdresAjax" asp-action="Index">Adres Defterler Ajax ile</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -46,7 +52,7 @@
             &copy; 2022 - WebUI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)

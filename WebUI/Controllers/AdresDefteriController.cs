@@ -37,7 +37,13 @@ namespace WebUI.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public async Task<IActionResult> Edit(int id) => View(await _service.GetirAdresDefteriIdIle(id));
+        public async Task<IActionResult> Edit(int id) {
+
+            ViewBag.KisiListesi = await _kisiService.GetirKisiler();
+
+            return View(await _service.GetirAdresDefteriIdIle(id)); 
+        
+        }
         [HttpPost]
         public async Task<IActionResult> Edit(AdresDefteriVM adresDefteriVM)
         {

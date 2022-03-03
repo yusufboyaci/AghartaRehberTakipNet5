@@ -19,7 +19,7 @@ namespace WebApi.Controllers
         {
             _adresRepository = adresRepository;
         }
-        [HttpGet]
+        [HttpGet]//HttpGet in yanına parentez açıp birşey yazma
         public IActionResult GetirAdresDefteriler()
         {
             return Json(_adresRepository.AdresDefteriler.Where(x => x.IsActive == true));

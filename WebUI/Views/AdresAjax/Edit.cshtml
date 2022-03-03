@@ -1,19 +1,17 @@
 ﻿@model AdresDefteriVM
 
-
 @{
-    ViewData["Title"] = "Create";
-    List<KisiVM> kisiler = ViewBag.KisiListesi;
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Create</h1>
+<h1>Edit</h1>
 
 <h4>AdresDefteriVM</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>           
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Adres" class="control-label"></label>
                 <input asp-for="Adres" class="form-control" />
@@ -29,21 +27,23 @@
                 <input asp-for="Konum" class="form-control" />
                 <span asp-validation-for="Konum" class="text-danger"></span>
             </div>
-           
             <div class="form-group">
                 <label asp-for="KisiId" class="control-label"></label>
-                <select asp-for="KisiId" class="form-control">
-               @foreach (var item in kisiler)
-	            {
-                   <option value="@item.Id">@item.Ad</option>
-		 
-	            }
-                </select>
+                <input asp-for="KisiId" class="form-control" />
                 <span asp-validation-for="KisiId" class="text-danger"></span>
             </div>
-
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
