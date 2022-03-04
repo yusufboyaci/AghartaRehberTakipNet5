@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    List<KisiVM> kisiler = ViewBag.KisiListesi;
 }
 
 <h1>Index</h1>
@@ -13,48 +14,55 @@
     <thead>
         <tr>
             <th>
-              Id
+                Id
             </th>
             <th>
-               Adres
+                Adres
             </th>
             <th>
                 Mail
             </th>
             <th>
-             Konum
+                Konum
             </th>
             <th>
-               KisiId
+                Kisi
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adres)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Konum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.KisiId)
-            </td>
-            <td>
-                
-                <a asp-controller="AdresDefteri" asp-action="Edit" asp-route-id ="@item.Id">Edit</a>|
-                <a asp-controller="AdresDefteri" asp-action="Delete" asp-route-id ="@item.Id">Delete</a>
-              
-            </td>
-        </tr>
-}
+        @foreach (var kisi in kisiler)
+        {
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adres)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Konum)
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.KisiId)*@
+                        @kisi.Ad  @kisi.Soyad
+                    </td>
+                    <td>
+
+                        <a asp-controller="AdresDefteri" asp-action="Edit" asp-route-id="@item.Id">Edit</a>|
+                        <a asp-controller="AdresDefteri" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+                    </td>
+                </tr>
+            }
+        }
     </tbody>
 </table>

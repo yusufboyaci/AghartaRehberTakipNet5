@@ -9,9 +9,9 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table" id="table">
     <thead>
-        <tr>
+        @*<tr>
             <th>
                 Id
             </th>
@@ -31,43 +31,45 @@
                 IsActive
             </th>
             <th></th>
-        </tr>
+        </tr>*@
     </thead>
-    <tbody id="table">
-
-    @*@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adres)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Konum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.KisiId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                <a asp-controller="AdresAjax" asp-action="Edit" asp-route-id="@item.Id">Edit</a>|
-                <a asp-controller="AdresAjax" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}*@
-    </tbody>
+    <tbody>
+       
+            @*@foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adres)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Konum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KisiId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        <a asp-controller="AdresAjax" asp-action="Edit" asp-route-id="@item.Id">Edit</a>|
+                        <a asp-controller="AdresAjax" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+        }*@
+       
+</tbody>
 </table>
 <script>
     $(document).ready(function () {
 
         $.ajax({
-            url: "AdresDefteri/GetirAdresDefteriler",
+            //url: "https://localhost:44398/api/AdresDefteri/GetirAdresDefteriler",
+            url: "https://localhost:44398/api/AdresDefteri",
             type: "GET",
             dataType: "json",
             contentType: "application/json; charset=utf-8",
@@ -75,20 +77,40 @@
             success: function (result) {
 
                 console.log(result);
-                //var table = $("#table tr").append(`<td>${result.Id}</td>`);
-                var table;
-                for (var item in '@Model') {
-               /* for (var item in result) {*/
-                    table.$("#table tr").append(`<td>${item.Id}</td>`);
-                    table.$("#table tr").append(`<td>${item.Adres}</td>`);
-                    table.$("#table tr").append(`<td>${item.Mail}</td>`);
-                    table.$("#table tr").append(`<td>${item.Konum}</td>`);
-                    table.$("#table tr").append(`<td>${item.KisiId}</td>`);
-                    table.$("#table tr").append(`<td>${item.IsActive}</td>`);
-                    table.$("#table tr").append(`<td> <a asp-controller="AdresAjax" asp-action="Edit" asp-route-id="${item.Id}">Edit</a>|
-                <a asp-controller="AdresAjax" asp-action="Delete" asp-route-id="${item.Id}">Delete</a></td>`);
+                var table = $("tbody");
+
+                table.append(` <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Adres
+            </th>
+            <th>
+                Mail
+            </th>
+            <th>
+                Konum
+            </th>
+            <th>
+                KisiId
+            </th>
+            <th>
+                IsActive
+            </th>
+            <th></th>
+        </tr>`);
+               
+                for (var i = 0; i < result.length; i++) {
+              
+
+                    table.append(`<tr><td>${result[i].id}</td><td>${result[i].adres}</td><td>${result[i].mail}</td><td>${result[i].konum}</td><td>${result[i].kisiId}</td><td>${result[i].isActive}</td><td> <a href=AdresAjax/Edit/${result[i].id}>Edit</a>|
+                <a href=AdresAjax/Delete/${result[i].id}>Delete</a></td> </tr>`);
+         
+                   
                 }
-                
+
+                $("table").html(table);
             },
             error: function (result) {
                 console.log(result);

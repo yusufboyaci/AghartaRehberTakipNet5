@@ -26,7 +26,7 @@ namespace WebUI
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-            services.AddCors();
+            //services.AddCors();
 
             services.AddHttpClient<KisiApiService>(o =>
             {
@@ -57,7 +57,7 @@ namespace WebUI
             }
             app.UseHttpsRedirection();
 
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader());
+            //app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader());
 
             app.UseStaticFiles();
 
