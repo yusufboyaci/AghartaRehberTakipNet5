@@ -65,18 +65,37 @@
 </tbody>
 </table>
 <script>
+
+    //function Sil(id) {
+    //    $.ajax({
+    //        url: 'https://localhost:44398/api/AdresDefteriSil/id',
+    //        type: 'DELETE',
+    //        dataType: 'json',
+    //        contentType: 'application/json; charset=utf-8',
+    //        async: true,
+    //        success: function (result) {
+
+    //        },
+    //        error: function (result) {
+    //            console.log(result);
+    //            alert("Hata sonucu");
+    //        }
+    //    })
+
+    //}
+
+
     $(document).ready(function () {
 
         $.ajax({
-            //url: "https://localhost:44398/api/AdresDefteri/GetirAdresDefteriler",
+           // url: "https://localhost:44398/api/AdresDefteri/GetirAdresDefteriler",
             url: "https://localhost:44398/api/AdresDefteri",
             type: "GET",
             dataType: "json",
             contentType: "application/json; charset=utf-8",
-            async: false,
+            async: true,
             success: function (result) {
-
-                console.log(result);
+               // console.log(result);
                 var table = $("tbody");
 
                 table.append(` <tr>
@@ -104,8 +123,10 @@
                 for (var i = 0; i < result.length; i++) {
               
 
+                    console.log(result.length);
+
                     table.append(`<tr><td>${result[i].id}</td><td>${result[i].adres}</td><td>${result[i].mail}</td><td>${result[i].konum}</td><td>${result[i].kisiId}</td><td>${result[i].isActive}</td><td> <a href=AdresAjax/Edit/${result[i].id}>Edit</a>|
-                <a href=AdresAjax/Delete/${result[i].id}>Delete</a></td> </tr>`);
+                <a href='href=AdresAjax/Delete/${result[i].id}'>Delete</a></td> </tr>`);
          
                    
                 }

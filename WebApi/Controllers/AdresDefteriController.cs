@@ -49,6 +49,7 @@ namespace WebApi.Controllers
         //      return Ok();
         //}
         [HttpDelete("{id}")]
+        //[HttpDelete("AdresDefteritSil/{id}")]
         public IActionResult AdresDefteritSil(int id)
         {
             AdresDefteri adresDefteri = _adresRepository.GetirAdresDefteriIdIle(id);
