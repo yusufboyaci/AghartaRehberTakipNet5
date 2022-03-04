@@ -59,10 +59,20 @@ namespace WebApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult KisiSil(int id)
         {
-            Kisi kisi = _kisiRepository.GetirKisiIdIle(id);
-            kisi.IsActive = false;
-            _kisiRepository.KisiGuncelle(kisi);
-            return Ok();
+            try
+            {
+                Kisi kisi = _kisiRepository.GetirKisiIdIle(id);
+                kisi.IsActive = false;
+                _kisiRepository.KisiGuncelle(kisi);
+                return Ok();
+            }
+            catch (Exception m)
+            {
+
+                throw new Exception(m.Message);
+            }
+           
+            
         }
     }
 }

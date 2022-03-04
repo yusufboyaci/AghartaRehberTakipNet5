@@ -32,8 +32,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var kisi in kisiler)
-        {
+      
 
 
             @foreach (var item in Model)
@@ -52,8 +51,7 @@
                         @Html.DisplayFor(modelItem => item.Konum)
                     </td>
                     <td>
-                        @*@Html.DisplayFor(modelItem => item.KisiId)*@
-                        @kisi.Ad  @kisi.Soyad
+                        @kisiler.FirstOrDefault(x => x.Id == item.KisiId).Ad @kisiler.FirstOrDefault(x => x.Id == item.KisiId).Soyad
                     </td>
                     <td>
 
@@ -63,6 +61,6 @@
                     </td>
                 </tr>
             }
-        }
+        
     </tbody>
 </table>

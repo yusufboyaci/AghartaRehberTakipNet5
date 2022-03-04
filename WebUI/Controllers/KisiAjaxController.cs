@@ -20,9 +20,9 @@ namespace WebUI.Controllers
         {
             return View();
         }
-        public IActionResult Delete()
-        {
-            return View();
-        }
+        //public IActionResult Delete()
+        //{
+        //    return View();
+        //}
     }
 }

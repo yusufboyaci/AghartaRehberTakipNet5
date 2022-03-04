@@ -55,7 +55,8 @@ namespace WebApi
 
             app.UseHttpsRedirection();
            // app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod());
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader());
+            //app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader());
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 
             app.UseRouting();

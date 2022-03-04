@@ -11,55 +11,34 @@
 </p>
 <table class="table">
     <thead>
-        @*<tr>
-             <th>
-                Id
-            </th>
-            <th>
-                Ad
-            </th>
-            <th>
-                Soyad
-            </th>
-            <th>
-               Yas
-            </th>
-            <th>
-                IsActive
-            </th>
-            <th></th>
-        </tr>
-            *@
+
     </thead>
     <tbody>
-@*@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Soyad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Yas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}*@
+       
     </tbody>
 </table>
 
 <script>
+
+    function Sil(id) {
+        $.ajax({
+            url: "https://localhost:44398/api/Kisi/"+id,
+            type: 'DELETE',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            async: true,
+            success: function (result) {
+                window.location.href = "https://localhost:44339/KisiAjax";
+            },
+            error: function (result) {
+                console.log(result);
+                alert("Hata");
+            }
+        })
+
+    }
+
+
 
     $(document).ready(function () {
 
@@ -92,11 +71,15 @@
 
                 for (var i = 0; i < result.length; i++) {
 
-
                     console.log(result.length);
+                    table.append(`<tr>
 
-                    table.append(`<tr><td>${result[i].id}</td><td>${result[i].ad}</td><td>${result[i].soyad}</td><td>${result[i].yas}</td><td><a href=AdresAjax/Edit/${result[i].id}>Edit</a>|
-                <a href='href=AdresAjax/Delete/${result[i].id}'>Delete</a></td> </tr>`);
+            <td>${result[i].id}</td>
+            <td>${result[i].ad}</td>
+            <td>${result[i].soyad}</td>
+            <td>${result[i].yas}</td>
+            <td><a href=AdresAjax/Edit/${result[i].id}>Edit</a>|
+                <a href='#' onclick="Sil(${result[i].id})">Delete</a></td> </tr>`);
 
 
                 }
