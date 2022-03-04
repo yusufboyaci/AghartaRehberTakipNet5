@@ -14,7 +14,6 @@
 
     </thead>
     <tbody>
-       
     </tbody>
 </table>
 
@@ -22,16 +21,17 @@
 
     function Sil(id) {
         $.ajax({
-            url: "https://localhost:44398/api/Kisi/"+id,
+            url: "https://localhost:44398/api/Kisi/" + id,
             type: 'DELETE',
             dataType: 'json',
+            data: { id: id },
             contentType: 'application/json; charset=utf-8',
             async: true,
             success: function (result) {
                 window.location.href = "https://localhost:44339/KisiAjax";
             },
-            error: function (result) {
-                console.log(result);
+            error: function (err) {
+                console.log(err);
                 alert("Hata");
             }
         })
@@ -65,7 +65,7 @@
             </th>
             <th>
                Yas
-            </th>      
+            </th>
             <th></th>
         </tr>`);
 
@@ -86,8 +86,8 @@
 
                 $("table").html(table);
             },
-            error: function (result) {
-                console.log(result);
+            error: function (err) {
+                console.log(err);
                 alert("Hata sonucu");
             }
         });
