@@ -19,7 +19,7 @@ namespace WebUI.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            ViewBag.KisiListesi = await _kisiService.GetirKisiler();
+            ViewBag.kisiler = await _kisiService.GetirKisiler();
             return View(await _service.GetirAdresDefterleri());
         }
         [HttpGet]

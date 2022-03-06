@@ -40,7 +40,7 @@ namespace WebApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
             });
             
-            services.AddCors();
+            services.AddCors();//Cors hatasý alamamk için eklenir.
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,7 +56,7 @@ namespace WebApi
             app.UseHttpsRedirection();
            // app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod());
             //app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader());
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());//Cors hatasý alýrsan ekle
 
 
             app.UseRouting();
